@@ -1,0 +1,291 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.24)  23 OCT 2014 19:34
+entering extended mode
+**Author_Biographies.tex
+
+(F:\GoogleDrive\CMS\Papers\2014AutonomouseRobots_Kuya\Submission\2014Autonomous
+eRobots_Kuya\Author_Biographies.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+
+LaTeX Warning: File `example.eps' already exists on the system.
+               Not generating it from this source.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\fix-cm.sty"
+Package: fix-cm 2006/09/13 v1.1m fixes to LaTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+))
+(F:\GoogleDrive\CMS\Papers\2014AutonomouseRobots_Kuya\Submission\2014Autonomous
+eRobots_Kuya\svjour3.cls
+Document Class: svjour3 2007/05/08 v3.2 
+LaTeX document class for Springer journals
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\fleqn.clo"
+File: fleqn.clo 1998/08/17 v1.1c Standard LaTeX option (flush left equations)
+\mathindent=\dimen102
+)
+Class Springer-SVJour3 Info: extra/valid Springer sub-package (-> *.clo) 
+(Springer-SVJour3)           not found in option list of \documentclass
+(Springer-SVJour3)           - autoactivating "global" style.
+
+(F:\GoogleDrive\CMS\Papers\2014AutonomouseRobots_Kuya\Submission\2014Autonomous
+eRobots_Kuya\svglov3.clo
+File: svglov3.clo 2009/12/18 v3.2 style option for standardised journals
+
+SVJour Class option: svglov3.clo for standardised journals
+)
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 147.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 148.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 149.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 150.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 151.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 152.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 153.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 155.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 156.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 157.
+\logodepth=\dimen103
+\headerboxheight=\dimen104
+\betweenumberspace=\dimen105
+\aftertext=\dimen106
+\headlineindent=\dimen107
+\c@inst=\count79
+\c@auth=\count80
+\instindent=\dimen108
+\authrun=\box26
+\authorrunning=\toks14
+\titrun=\box27
+\titlerunning=\toks15
+\combirun=\box28
+\c@lastpage=\count81
+\rubricwidth=\dimen109
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\spthmsep=\dimen110
+\c@theorem=\count87
+\c@case=\count88
+\c@conjecture=\count89
+\c@corollary=\count90
+\c@definition=\count91
+\c@example=\count92
+\c@exercise=\count93
+\c@lemma=\count94
+\c@note=\count95
+\c@problem=\count96
+\c@property=\count97
+\c@proposition=\count98
+\c@question=\count99
+\c@solution=\count100
+\c@remark=\count101
+\c@figure=\count102
+\c@table=\count103
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\figcapgap=\dimen111
+\tabcapgap=\dimen112
+\figgap=\dimen113
+\bibindent=\dimen114
+\@tempcntc=\count104
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count105
+))
+\Gin@req@height=\dimen115
+\Gin@req@width=\dimen116
+)
+(C:\Users\Kuya\AppData\Roaming\MiKTeX\2.9\tex\latex\picins\picins.sty
+Option `picins' Version 3.0 Sep. 1992, TH Darmstadt/HRZ
+\@BILD=\box29
+\@TEXT=\box30
+\d@breite=\dimen117
+\d@hoehe=\dimen118
+\d@xoff=\dimen119
+\d@yoff=\dimen120
+\d@shad=\dimen121
+\d@dash=\dimen122
+\d@boxl=\dimen123
+\d@pichskip=\dimen124
+\d@tmp=\dimen125
+\d@tmpa=\dimen126
+\d@bskip=\dimen127
+\hsiz@=\dimen128
+\p@getot@l=\dimen129
+\c@breite=\count106
+\c@hoehe=\count107
+\c@xoff=\count108
+\c@yoff=\count109
+\c@pos=\count110
+\c@shad=\count111
+\c@dash=\count112
+\c@boxl=\count113
+\c@zeilen=\count114
+\@changemode=\count115
+\c@piccaption=\count116
+\c@piccaptionpos=\count117
+\c@picpos=\count118
+\c@whole=\count119
+\c@half=\count120
+\c@tmp=\count121
+\c@tmpa=\count122
+\c@tmpb=\count123
+\c@tmpc=\count124
+\c@tmpd=\count125
+\d@leftskip=\skip43
+\ptoti=\dimen130
+\ptotii=\dimen131
+\env@box=\box31
+\d@envdp=\dimen132
+\c@hsize=\count126
+\c@envdp=\count127
+\d@envb=\dimen133
+)
+(F:\GoogleDrive\CMS\Papers\2014AutonomouseRobots_Kuya\Submission\2014Autonomous
+eRobots_Kuya\Author_Biographies.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+
+Unknown journal: specify \journalname{<name of your journal>} in preambel
+
+(C:\Users\Kuya\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count128
+\scratchdimen=\dimen134
+\scratchbox=\box32
+\nofMPsegments=\count129
+\nofMParguments=\count130
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count131
+\MPscratchDim=\dimen135
+\MPnumerator=\count132
+\makeMPintoPDFobject=\count133
+\everyMPtoPDFconversion=\toks18
+) <figures/kuya.jpg, id=1, 199.34476pt x 246.01912pt>
+File: figures/kuya.jpg Graphic file (type jpg)
+ <use figures/kuya.jpg>
+Package pdftex.def Info: figures/kuya.jpg used on input line 53.
+(pdftex.def)             Requested size: 72.26999pt x 89.18996pt.
+
+Overfull \hbox (0.34029pt too wide) in paragraph at lines 54--55
+\OT1/cmr/bx/n/10 Kuya Takami \OT1/cmr/m/n/10 is pur-su-ing his Ph.D.
+ []
+
+
+Overfull \hbox (0.16725pt too wide) in paragraph at lines 54--55
+\OT1/cmr/m/n/10 ginia Poly-tech-nic In-sti-tute and State
+ []
+
+
+Overfull \hbox (8.47285pt too wide) in paragraph at lines 54--55
+\OT1/cmr/m/n/10 Com-pu-ta-tional Multi-physics and Sys-
+ []
+
+
+Overfull \hbox (10.59193pt too wide) in paragraph at lines 54--55
+\OT1/cmr/m/n/10 tems Lab-o-ra-tory, and Na-tional Sci-ence Foun-da-tion funded
+ []
+
+<figures/furukawa.jpg, id=3, 112.92188pt x 147.55125pt>
+File: figures/furukawa.jpg Graphic file (type jpg)
+
+<use figures/furukawa.jpg>
+Package pdftex.def Info: figures/furukawa.jpg used on input line 57.
+(pdftex.def)             Requested size: 72.26999pt x 94.43697pt.
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+
+Overfull \hbox (14.94504pt too wide) in paragraph at lines 58--59
+\OT1/cmr/m/n/10 in Me-chan-i-cal En-gi-neer-ing from Waseda
+ []
+
+
+Overfull \hbox (7.2784pt too wide) in paragraph at lines 58--59
+\OT1/cmr/m/n/10 Uni-ver-sity, Japan, in 1990, the M.Eng.
+ []
+
+
+Overfull \hbox (5.75058pt too wide) in paragraph at lines 58--59
+\OT1/cmr/m/n/10 in Mecha-tronic En-gi-neer-ing from Uni-
+ []
+
+
+Overfull \hbox (5.48071pt too wide) in paragraph at lines 58--59
+\OT1/cmr/m/n/10 ence from Uni-ver-sity of Tokyo, Japan, in 1996. He worked
+ []
+
+[1{C:/Users/Kuya/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+
+ <F:/GoogleDrive/CMS/Papers/2014AutonomouseRobots_Kuya/Submission/2014Autonomou
+seRobots_Kuya/figures/kuya.jpg> <F:/GoogleDrive/CMS/Papers/2014AutonomouseRobot
+s_Kuya/Submission/2014AutonomouseRobots_Kuya/figures/furukawa.jpg>]
+(F:\GoogleDrive\CMS\Papers\2014AutonomouseRobots_Kuya\Submission\2014Autonomous
+eRobots_Kuya\Author_Biographies.aux) ) 
+Here is how much of TeX's memory you used:
+ 1904 strings out of 493921
+ 28079 string characters out of 3147285
+ 78165 words of memory out of 3000000
+ 5230 multiletter control sequences out of 15000+200000
+ 4247 words of font info for 16 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,7n,33p,1106b,159s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr8.pfb>
+Output written on Author_Biographies.pdf (1 page, 146609 bytes).
+PDF statistics:
+ 24 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+

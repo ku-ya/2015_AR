@@ -1,0 +1,67 @@
+Reviewer #1: The paper proposes a 2D localization method of a non-field-of-view acoustic target.
+The proposed method combines optical and acoustic information,
+and estimates the target position using grid based recursive Bayesian estimation.
+It is originally proposed in WIAMIS 2013 conference.
+This journal paper gives clear and detailed explanation.
+The performance and its limitation is evaluated in detail.
+I have just one comment.
+The proposed system indicates large errors at several conditions, such as Fig.9 (d).
+Is there future possibility to distinguish the error detection where cannot be estimated.
+>>> The error detection can be mitigated by use of RBE in this application. For the future development, we are planning to use wave properties to predict further error detections.<<<
+It is important for a robot application and additional consideration increase the journal value.
+
+
+I recommend some minor revisions.
+  - Font size is changed from page 6 right column.
+  >>>Fixed the font size discrepancy<<<
+  - Text in some figures are hard to read. (especially equations)
+     bitmap figures should be revised to vector data.
+  >>>
+
+Reviewer #2: This paper addresses AV-integrated estimation of a nonvisible-field-of-view (NFOV) target based on Recursive Bayesian Estimation (RBE).
+The approach and motivation of this paper is quite interesting, but the paper includes unclear parts, which should be clarified to improve the quality of the paper for publication.
+
+* The authors should cite NFOV-related work and discuss on the differences to clarify the positioning and to enhance the originality of this paper.
+>>>The suggestion has been applied to the paper<<<
+
+Even, J., Morales, Y., Kallakuri, N., Ishi, C., Hagita, N.
+"Audio ray tracing for position estimation of entities in blind regions"
+2014 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2014),
+pp.1920-1925, IEEE. 2014.
+
+Narang, G., Nakamura, K., Nakadai, K.
+"Auditory-aware navigation for mobile robots based on reflection-robust sound source localization and visual SLAM"
+2014 IEEE International Conference on Systems, Man and Cybernetics (SMC 2014),
+pp.4021-4026, IEEE. 2014.
+
+* P.2 (right) The authors claimed the use of ILD for localization. My question is why they selected ILD as a cue for localization? Any specific reason? Actually, in conclusion, they also mentioned that IPD/ITD will improve the performance more, but why didn't they start with using IPD?
+>>> On this paper, the acquisition system does not have to be synchronized.
+
+* In Eq.(14), what is the effect of a_j? What kind of thought lies in this weighting in the background?
+
+* Figure 8: I do not fully understand what the authors want to say from this figure. All of a)-d) look the same although the authors claimed that ILD contains information on the target position. Please clarify this.
+>>>The figure were shown for entire frequency range that were acquired; however, it was hard to tell the differences from those figures. We fixed this issue by limiting the frequency range for the plot<<<
+
+* P.7 L.58(right) The author claimed that the error of 20cm is not sufficient enough for NLOS localization. I am not sure if the error of 20cm is really sufficient or not. I suggest that the authors should clarify the criteria or the error target to decide whether it is sufficient or not.
+>>> 
+
+* How do the authors deal with multiple sources? For example, Fig.9d) show two high peaks. Since the authors know that there is a single sound source, they can decide one of them is a fake peak. Some discussions should be added on multiple source cases?
+>>> Because this paper's major contribution was ... the multiple sound sources were not discussed.
+
+* Related to the previous question, the authors used a white noise for a sound source. In this case, all frequencies can be used for localization, which means that it is almost the same as time-domain processing. What are the benefits to use frequency-domain processing shown in Eq.(13)? I feel that frequency-domain processing has an advantage when the authors consider localization of multiple sound sources, but it looks that only a single sound source is currently in scope.
+
+* What is processing time like? Is it fast enough? It is informative when the authors give some comments on this.
+
+Minor comments:
+* P.2 L.48 "The last approach" should be in new paragraph.
+>>> Modified  as suggested
+* The notation of variables is very complicated. It is better to simplify them, otherwise add a table to explain all variables as an appendix.
+>>> 
+* P.7 L:51 "Figure 8 shows six ILDs", but only four figures are shown in Fig.8.
+>>> Issue addressed was modified
+* Figure 8, letters for axes are too small to read
+>>> Modified as suggested
+* Figure 14, why cannot a circle be seen in b)-d)? Please add a comment to explain this.
+>>> Because it is in NFOV, the observation likelihood for the camera gives equally likely to be anywhere in NFOV, thus there are no maximum observation likelihood for this case.
+* I strongly recommend that this paper should be proofread by native speakers professional in this field.
+(e.g. P.2 used localize a NFOV target -> used to localize an NFOV target)
