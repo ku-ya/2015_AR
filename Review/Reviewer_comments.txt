@@ -38,6 +38,7 @@ pp.4021-4026, IEEE. 2014.
 >>> On this paper, the acquisition system does not have to be synchronized.
 
 * In Eq.(14), what is the effect of a_j? What kind of thought lies in this weighting in the background?
+>>>This step filter out the smaller
 
 * Figure 8: I do not fully understand what the authors want to say from this figure. All of a)-d) look the same although the authors claimed that ILD contains information on the target position. Please clarify this.
 >>>The figure were shown for entire frequency range that were acquired; however, it was hard to tell the differences from those figures. We fixed this issue by limiting the frequency range for the plot<<<

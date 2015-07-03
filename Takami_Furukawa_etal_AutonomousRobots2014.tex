@@ -50,11 +50,13 @@ grestore
 \usepackage{verbatim,subfigure}
 \usepackage{epsfig}
 \usepackage{rotating}
-%\usepackage{flushend}
+\usepackage{flushend}
+\usepackage{nomencl}
+\makenomenclature
 %\usepackage{color}
 %\usepackage[usenames,dvipsnames]{color}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage[pagebackref=true,breaklinks=true,colorlinks,linkcolor=black,bookmarks=false,citecolor=black]{hyperref}
+\usepackage[pagebackref=true,breaklinks=true,colorlinks,linkcolor=green,bookmarks=false,citecolor=blue]{hyperref}
 
 
 % insert here the call for the packages your document requires
@@ -346,7 +348,7 @@ M. Kumon and D. Kimoto\at
 \maketitle
 
 \begin{abstract}
-This paper presents a nonvisible field-Of-view (NFOV) target estimation approach that incorporates optical and acoustic sensors.  An optical sensor can accurately localize a target in its field-of-view (FOV) whereas the acoustic sensor could estimate the target location over a much larger space but only with limited accuracy.  A recursive Bayesian estimation framework where observations of the optical and acoustic sensors are probabilistically treated and fused is proposed in this paper. A technique to construct the observation likelihood when two microphones are used as the acoustic sensor is also described.  The proposed technique derives and stores the interaural level difference of observations from the two microphones for different target positions in advance and constructs the likelihood through correlation.  A parametric study of the proposed acoustic sensing technique in a controlled test environment, and experiments with a NFOV target in an actual indoor environment are presented to demonstrate the capability of the proposed technique.  
+This paper presents a nonvisible field-of-view (NFOV) target estimation approach that incorporates optical and acoustic sensors.  An optical sensor can accurately localize a target in its field-of-view (FOV) whereas the acoustic sensor could estimate the target location over a much larger space but only with limited accuracy.  A recursive Bayesian estimation framework where observations of the optical and acoustic sensors are probabilistically treated and fused is proposed in this paper. A technique to construct the observation likelihood when two microphones are used as the acoustic sensor is also described.  The proposed technique derives and stores the interaural level difference of observations from the two microphones for different target positions in advance and constructs the likelihood through correlation.  A parametric study of the proposed acoustic sensing technique in a controlled test environment, and experiments with a NFOV target in an actual indoor environment are presented to demonstrate the capability of the proposed technique.  
 
 %Insert your abstract here. Include keywords, PACS and mathematical
 %subject classification numbers as needed.
@@ -363,7 +365,7 @@ The coverage of a larger area can be achieved in four different ways.  First is 
 
 The second approach deploys radio-frequency (RF) transmitters and receivers where an RF transmitter is mounted on a target of concern.  In one arrangement, RF receivers form a wireless sensor network (WSN), and numerical techniques are used to localize an NFOV target by processing information of received signals such as signal intensity \cite{Bertinato2008,Dai2012,Ni2004,Zhang2010,Liu2007,Gezici2008,Guvenc2009}.  For example, Wang \textit{et al.} \cite{Wang2012} developed and applied a Bayesian filter using the chirp-spread-spectrum ranging.  The achievement of sub-meter accuracy has been reported, but the accuracy significantly depends on the settings of the networking infrastructure including the location and the number of wireless sensor nodes \cite{Jung2011,Gao2013}.  A more accurate arrangement with minimal infrastructure uses ``fingerprints'' \cite{Bahl2000,lad04}.  In a static environment, there is a unique fingerprint at each location.  A target can thus be localized by feature-matching the fingerprints.  Whilst this arrangement could achieve high accuracy, the critical problem inherent in the RF based approach is its applicability to only targets with an RF transmitter \cite{Chen1999,Prigge2004,Seow2008,Khoury2009}. 
 
-In the third, acoustic sensors are used for target estimation.  If the target is cooperative, it is possible to communicate with the target and estimate its location via sound.  The approach most commonly utilizes the time-of-arrival (TOA) information of acoustic signals. Chan \textit{et al.}~\cite{cha06} and Riba and Urruela~\cite{rib05} localized a target by positioning three or more LOS acoustic sensors; furthermore, Nakadai \textit{et al.}~\cite{nakadai06} and Sasaki \textit{et. al.}~\cite{sasaki09} demonstrated LOS mobile robot localization using microphone array. Mak and Furukawa~\cite{Mak2009} considered the diffraction characteristics of low-frequency sound and estimated target location.  The former is an acoustic version of WSN, but the reflective nature of sound waves confines acoustic sensor locations to LOS, which is not possible in many occasions.  The latter enables NFOV target estimation, but the time of sound generation, which is often unknown, must be informed beforehand.  The acoustic approach can be advantageously used for any target that can make sound unlike the RF based approach. Recently, \cite{narang2014auditory} and \cite{even2014audio} investigated the NFOV target localization identifying reflection of sound. Narang~\textit{et. al.} detected reflected sound by  combination of an image model and dynamic environment map. Even~\textit{et. al.} localized the sound source by ray tracing method based on the reflection signal arrival directions. Former approach estimates the direction of sound source, but does not estimate the target position in NFOV. Latter approach gives NFOV estimation with meter order accuracy with some of inconsistent variation in trials. The majority of sound localization challenges have been focused on the direction of sound rather than its position due to complexity of sound wave propagation \cite{mic03,sva12,lu10}. 
+In the third, acoustic sensors are used for target estimation. The acoustic approach can be advantageously used for any target that can make sound unlike the RF based approach. If the target is cooperative, it is possible to communicate with the target and estimate its location via sound.  The approach most commonly utilizes the time-of-arrival (TOA) information of acoustic signals. Chan \textit{et al.}~\cite{cha06} and Riba and Urruela~\cite{rib05} localized a target by positioning three or more LOS acoustic sensors; furthermore, Nakadai \textit{et al.}~\cite{nakadai06} and Sasaki \textit{et. al.}~\cite{sasaki09} demonstrated LOS mobile robot localization using microphone array. Mak and Furukawa~\cite{Mak2009} considered the diffraction characteristics of low-frequency sound and estimated target location.  The former is an acoustic version of WSN, but the reflective nature of sound waves confines acoustic sensor locations to LOS, which is not possible in many occasions.  The latter enables NFOV target estimation, but the time of sound generation, which is often unknown, must be informed beforehand. Recently, \cite{narang2014auditory} and \cite{even2014audio} investigated the NFOV target localization identifying reflection of sound. Narang \textit{et. al.} detected reflected sound by  combination of an image model and dynamic environment map. Even~\textit{et. al.} localized the sound source by ray tracing method based on the reflection signal arrival directions. The former approach estimates the direction of sound source, but does not estimate the target position in NFOV. The latter approach resulted NFOV estimation with meter order accuracy with some of inconsistent variation in trials. The majority of sound localization challenges have been focused on the direction of sound rather than its position due to complexity of sound wave propagation \cite{mic03,sva12,lu10}. 
 
 The last approach enhances the NFOV target estimation with a sensor having a limited FOV such as an optical sensor by using a numerical technique.  Mauler \cite{mau03} stated the NFOV estimation problem mathematically, and Furukawa, et al. \cite{fur06,fur12} developed the so-called Bayesian Search and Tracking (SAT) technique as a generalized numerical solution.  In this technique, the event of ``no detection'' is converted into an observation likelihood and utilized to positively update probabilistic belief on the target that is dynamically maintained by the recursive Bayesian estimation (RBE).  While search with no detection is made possible in addition to tracking with detection, search has been found to fail unless the target is re-discovered within a short period after being lost.  The unreliability of the belief significantly grows when there is no detection.  It is, therefore, preferable to use any information on the target if available rather than purely relying on the information contained in no detection events.
   
@@ -379,6 +381,7 @@ Consider a target $t$ of concern, the motion of which is given by
 \Vxbp{k+1}{t} = \Vfp{t}{\Vxbp{k}{t}, \Vubp{k}{t}, \Vwbp{k}{t}}
 \end{equation}
 where $\Vxbp{k}{t} \in \Cal{X}^t$ is the state of the target at time step $k$, $\Vubp{k}{t} \in \Cal{U}^t$ is the set of control inputs of the target, and $\Vwbp{k}{t} \in \Cal{W}^t$ is the ``system noise'' of the target. For simplicity, the target state describes the two-dimensional position.
+\nomenclature{$\Vxbp{k+1}{t}$}{The state of the target at time step $k$}
 
 In order for the formulation of the NFOV target estimation problem, this moving target is observed by a sensor platform $s$.  To focus on the estimation of a mobile target, let the sensor platform be stationary and its global state be accurately known as $\tVxp{s} \in \Cal{X}^s$.  Note that $\tilde{\bs{}}$ is an instance of $\bs{}$.  The sensor platform carries an optical sensor to observe the target.  The FOV, or more precisely the ``observable region'', of the optical sensor $s_c$ can be expressed with the probability of detecting the target $P_d\bs{\Vxbp{k}{t}|\tVxp{s}}$ as
 \begin{equation}
@@ -880,6 +883,16 @@ The first experiment studied the capability and limitation of the proposed acous
 The paper has demonstrated the new concept for NFOV target estimation, and many challenges are still open for future study.  One of the improvements to the approach is the enhancement of acoustic sensing by incorporating the interaural time difference (ITD) and the interaural phase difference (IPD) as well as the use of non-white noise sound so that the approach could be used for various applications.  Other ongoing work includes the implementations of the proposed approach to the mobile sensor platform and to the infrastructure.  The proposed approach will can be used for various practical applications including home security, home heath care and urban search-and-rescue by the extension.  
 \bibliography{reference/cite_cur}
 \bibliographystyle{abbrv}
+
+\appendix
+\section*{Appendix}
+\subsection*{Nomenclature}
+\printnomenclature
+\begin{itemize}
+\item [sdaf] test
+\end{itemize}
+%{$\Vxbp{k+1}{t}$}{The state of the target at time step $k$}
+
 %\bibliographystyle{spbasic}      % %basic style, author-year citations
 %\bibliographystyle{spmpsci}      % mathematics and physical sciences
 %\bibliographystyle{spphys}       % APS-like style for physics
