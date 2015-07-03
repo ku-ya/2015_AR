@@ -13,11 +13,10 @@ It is important for a robot application and additional consideration increase th
 
 I recommend some minor revisions.
   - Font size is changed from page 6 right column.
-  >>>Fixed the font size discrepancy<<<
   - Text in some figures are hard to read. (especially equations)
      bitmap figures should be revised to vector data.
-  >>>
-
+ >>>Fixed the font size<<<
+ 
 Reviewer #2: This paper addresses AV-integrated estimation of a nonvisible-field-of-view (NFOV) target based on Recursive Bayesian Estimation (RBE).
 The approach and motivation of this paper is quite interesting, but the paper includes unclear parts, which should be clarified to improve the quality of the paper for publication.
 
@@ -39,6 +38,7 @@ pp.4021-4026, IEEE. 2014.
 
 * In Eq.(14), what is the effect of a_j? What kind of thought lies in this weighting in the background?
 >>>This step filter out the smaller
+
 
 * Figure 8: I do not fully understand what the authors want to say from this figure. All of a)-d) look the same although the authors claimed that ILD contains information on the target position. Please clarify this.
 >>>The figure were shown for entire frequency range that were acquired; however, it was hard to tell the differences from those figures. We fixed this issue by limiting the frequency range for the plot<<<

@@ -51,12 +51,12 @@ grestore
 \usepackage{epsfig}
 \usepackage{rotating}
 \usepackage{flushend}
-\usepackage{nomencl}
-\makenomenclature
+\usepackage{enumitem}
 %\usepackage{color}
 %\usepackage[usenames,dvipsnames]{color}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage[pagebackref=true,breaklinks=true,colorlinks,linkcolor=green,bookmarks=false,citecolor=blue]{hyperref}
+
 
 
 % insert here the call for the packages your document requires
@@ -303,9 +303,10 @@ grestore
 % Insert the name of "your journal" with
 % \journalname{myjournal}
 %
+\usepackage{authblk}
 \begin{document}
 
-\title{\LARGE \bf Estimation of a Nonvisible Field-of-View Mobile Target Incoorperating Optical and Acoustic Sensors%
+\title{\LARGE \bf Estimation of a Nonvisible Field-of-View Mobile Target Incorporating Optical and Acoustic Sensors%
 %\thanks{Grants or other notes
 %about the article that should go on the front page should be
 %placed here. General acknowledgments should be placed at the end of the article.}
@@ -313,27 +314,28 @@ grestore
 %\subtitle{\\ If so, write it here}
 \titlerunning{Estimation of a Nonvisible Field-of-View Mobile Target }        % if too long for running head
 
-\author{Kuya Takami  \and 
-        Tomonari Furukawa \and   
-        Makoto Kumon \and
-        Daisuke Kimoto  \and
-        Gamini Dissanayake%etc.
+\author[1]{Kuya Takami$^{*1}$ \and 
+        Tomonari Furukawa$^{*1,3}$ \and   
+        Makoto Kumon$^{*2}$ \and
+        Daisuke Kimoto$^{*2}$  \and
+        Gamini Dissanayake$^{*3}$%etc.
 }
+
 
 \authorrunning{Kuya Takami,  Tomonari Furukawa \textit{et al.}} % if too long for running head
 
-\institute{K. Takami and  T. Furukawa \at
+\institute{${*1 }$ K. Takami and T. Furukawa\at
               Department of Mechanical Engineering, Virginia Tech, Blacksburg, VA, USA \\
               \email{\{kuya, furukawa\}@vt.edu}
            \and              
-M. Kumon and D. Kimoto\at
+${*2 }$ M. Kumon and D. Kimoto \at
               Department of Mechanical System Engineering, Kumamoto University, Kumamoto, Japan \\
               %Tel.: +123-45-678910\\
               %Fax: +123-45-678910\\
               \email{kumon@gpo.kumamoto-u.ac.jp}           %  \\
 %             \emph{Present address:} of F. Author  %  if needed
            \and              
-           G. Dissanayake\at
+      ${*3 }$ T. Furukawa and G. Dissanayake \at
            Center for Autonomous Systems, University of Technology, Sydney, NSW, Australia \\
            %Tel.: +123-45-678910\\
            %Fax: +123-45-678910\\
@@ -381,7 +383,7 @@ Consider a target $t$ of concern, the motion of which is given by
 \Vxbp{k+1}{t} = \Vfp{t}{\Vxbp{k}{t}, \Vubp{k}{t}, \Vwbp{k}{t}}
 \end{equation}
 where $\Vxbp{k}{t} \in \Cal{X}^t$ is the state of the target at time step $k$, $\Vubp{k}{t} \in \Cal{U}^t$ is the set of control inputs of the target, and $\Vwbp{k}{t} \in \Cal{W}^t$ is the ``system noise'' of the target. For simplicity, the target state describes the two-dimensional position.
-\nomenclature{$\Vxbp{k+1}{t}$}{The state of the target at time step $k$}
+
 
 In order for the formulation of the NFOV target estimation problem, this moving target is observed by a sensor platform $s$.  To focus on the estimation of a mobile target, let the sensor platform be stationary and its global state be accurately known as $\tVxp{s} \in \Cal{X}^s$.  Note that $\tilde{\bs{}}$ is an instance of $\bs{}$.  The sensor platform carries an optical sensor to observe the target.  The FOV, or more precisely the ``observable region'', of the optical sensor $s_c$ can be expressed with the probability of detecting the target $P_d\bs{\Vxbp{k}{t}|\tVxp{s}}$ as
 \begin{equation}
@@ -503,7 +505,7 @@ Figure \ref{fig:acoustic} illustrates the observation likelihood of the acoustic
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width = 8cm]{acoustic.png} % PDF
+	\includegraphics[width = \columnwidth]{acoustic.png} % PDF
 	\caption{Acoustic observation likelihood}
 	\label{fig:acoustic}
 \end{figure}
@@ -884,14 +886,22 @@ The paper has demonstrated the new concept for NFOV target estimation, and many 
 \bibliography{reference/cite_cur}
 \bibliographystyle{abbrv}
 
-\appendix
-\section*{Appendix}
-\subsection*{Nomenclature}
-\printnomenclature
-\begin{itemize}
-\item [sdaf] test
-\end{itemize}
-%{$\Vxbp{k+1}{t}$}{The state of the target at time step $k$}
+%\appendix
+%\section*{Appendix}
+%\subsection*{Nomenclature}
+
+%\begin{itemize}[label={},leftmargin=1.5cm]
+%    \item[$\Vxbp{k}{t}$]{state of the target at time step $k$}
+%    \item[$\Vubp{k}{t}$]{target control inputs}
+%    \item[$\Vwbp{k}{t}$]{ system noise of the target}
+%   	\item[$\tVxp{s}$]{state of the sensor}
+%   	\item[$\tilde{\bs{}}$]{instance of $\bs{}$} 
+%   	\item[$P_d\bs{\Vxbp{k}{t}|\tVxp{s}}$]{probability of detecting the target}
+%   	\item[$\pVzbp{s_c}{k}{t}$]{target obseved from the optical sensor}
+%   	\item[$\pVvbp{s_c}{k}{t}$]{observation noise}
+%   	\item[$\emptyset$]{empty element}
+%   	\\
+%\end{itemize}
 
 %\bibliographystyle{spbasic}      % %basic style, author-year citations
 %\bibliographystyle{spmpsci}      % mathematics and physical sciences
