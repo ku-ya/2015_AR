@@ -59,6 +59,7 @@ grestore
 \usepackage[pagebackref=true,breaklinks=true,colorlinks,linkcolor=green,bookmarks=false,citecolor=blue]{hyperref}
 
 
+
 % insert here the call for the packages your document requires
 %\usepackage{latexsym}
 % etc.
@@ -382,6 +383,7 @@ Consider a target $t$ of concern, the motion of which is given by
 \end{equation}
 where $\Vxbp{k}{t} \in \Cal{X}^t$ is the state of the target at time step $k$, $\Vubp{k}{t} \in \Cal{U}^t$ is the set of control inputs of the target, and $\Vwbp{k}{t} \in \Cal{W}^t$ is the ``system noise'' of the target. For simplicity, the target state describes the two-dimensional position.
 \nomenclature{$\Vxbp{k+1}{t}$}{The state of the target at time step $k$}
+
 
 In order for the formulation of the NFOV target estimation problem, this moving target is observed by a sensor platform $s$.  To focus on the estimation of a mobile target, let the sensor platform be stationary and its global state be accurately known as $\tVxp{s} \in \Cal{X}^s$.  Note that $\tilde{\bs{}}$ is an instance of $\bs{}$.  The sensor platform carries an optical sensor to observe the target.  The FOV, or more precisely the ``observable region'', of the optical sensor $s_c$ can be expressed with the probability of detecting the target $P_d\bs{\Vxbp{k}{t}|\tVxp{s}}$ as
 \begin{equation}
@@ -892,6 +894,7 @@ The paper has demonstrated the new concept for NFOV target estimation, and many 
 \item [sdaf] test
 \end{itemize}
 %{$\Vxbp{k+1}{t}$}{The state of the target at time step $k$}
+
 
 %\bibliographystyle{spbasic}      % %basic style, author-year citations
 %\bibliographystyle{spmpsci}      % mathematics and physical sciences
