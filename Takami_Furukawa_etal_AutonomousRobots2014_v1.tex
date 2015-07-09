@@ -55,7 +55,7 @@ grestore
 %\usepackage{color}
 %\usepackage[usenames,dvipsnames]{color}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\usepackage[pagebackref=true,breaklinks=true,colorlinks,linkcolor=black,bookmarks=false,citecolor=blue]{hyperref}
+\usepackage[pagebackref=true,breaklinks=true,colorlinks,linkcolor=OliveGreen,bookmarks=false,citecolor=blue]{hyperref}
 \usepackage{soul}
 
 
@@ -64,9 +64,8 @@ grestore
 % etc.
 %
 % please place your own definitions here and don't use \def but
-%\newcommand{\thl}[1]{\hl{#1}}
+\newcommand{\thl}[1]{\hl{#1}}
 
-\newcommand{\thl}[1]{{#1}}
 \newcommand{\V}[1] {\mathbf{#1}}
 \newcommand{\Vx}[0] {\mathbf{x}}
 \newcommand{\Vy}[0] {\mathbf{y}}
@@ -352,7 +351,7 @@ ${*2 }$ M. Kumon and D. Kimoto \at
 \maketitle
 
 \begin{abstract}
-This paper presents a nonvisible field-of-view (NFOV) target estimation approach that incorporates optical and acoustic sensors.  An optical sensor can accurately localize a target in its field-of-view (FOV) whereas the acoustic sensor could estimate the target location over a much larger space but only with limited accuracy.  A recursive Bayesian estimation framework where observations of the optical and acoustic sensors are probabilistically treated and fused is proposed in this paper. A technique to construct the observation likelihood when two microphones are used as the acoustic sensor is also described.  The proposed technique derives and stores the interaural level difference of observations from the two microphones for different target positions in advance and constructs the likelihood through correlation.  A parametric study of the proposed acoustic sensing technique in a controlled test environment, and experiments with an NFOV target in an actual indoor environment are presented to demonstrate the capability of the proposed technique.  
+This paper presents a nonvisible field-of-view (NFOV) target estimation approach that incorporates optical and acoustic sensors.  An optical sensor can accurately localize a target in its field-of-view (FOV) whereas the acoustic sensor could estimate the target location over a much larger space but only with limited accuracy.  A recursive Bayesian estimation framework where observations of the optical and acoustic sensors are probabilistically treated and fused is proposed in this paper. A technique to construct the observation likelihood when two microphones are used as the acoustic sensor is also described.  The proposed technique derives and stores the interaural level difference of observations from the two microphones for different target positions in advance and constructs the likelihood through correlation.  A parametric study of the proposed acoustic sensing technique in a controlled test environment, and experiments with a NFOV target in an actual indoor environment are presented to demonstrate the capability of the proposed technique.  
 
 %Insert your abstract here. Include keywords, PACS and mathematical
 %subject classification numbers as needed.
@@ -363,17 +362,17 @@ This paper presents a nonvisible field-of-view (NFOV) target estimation approach
 
 \section{Introduction}
 \label{intro} 
-Mobile target estimation, or more strictly target localization and tracking, has been a research challenge over several decades due to the existence of a variety of applications in addition to the significance and the difficulty of each application.  Indoor mobile target estimation, which is the focus of this paper, sees its significance in applications such as home security, home health care and urban search-and-rescue whilst its difficulty is primarily governed by the complexity of indoor structures \cite{Bahl2000,Khoury2009}.  Complex indoor structures make estimation problems challenging as they could introduce largely unobservable regions when an optical sensor such as a camera is deployed \cite{ledwich04}.  This is because optical sensor's field-of-view (FOV) is determined by the range of the optical sensor and the line-of-sight (LOS) from the optical sensor, which could be small in highly constrained environments.  This gives rise to need for nonvisible FOV (NFOV) mobile target estimation. 
+Mobile target estimation, or more strictly target localization and tracking, has been a research challenge over several decades due to the existence of a variety of applications in addition to the significance and the difficulty of each application.  Indoor mobile target estimation, which is the focus of this paper, sees its significance in applications such as home security, home health care and urban search-and-rescue whilst its difficulty is primarily governed by the complexity of indoor structures \cite{Bahl2000,Khoury2009}.  Complex indoor structures make estimation problems challenging as they could introduce large unobservable regions when an optical sensor such as a camera is deployed \cite{ledwich04}.  This is because optical sensor's field-of-view (FOV) is determined by the range of the optical sensor and the line-of-sight (LOS) from the optical sensor, which could be small in highly constrained environments.  This gives rise to need for nonvisible FOV (NFOV) mobile target estimation. 
  
 The coverage of a larger area can be achieved in four different ways.  First is the most straightforward approach, which is to expand the optical FOV.  It can be done by either implementing a single optical sensor with a larger FOV, such as an omnidirectional camera \cite{kobilarov2006,nayar1997}, or multiple optical sensors each covering a different FOV, such as a spherical camera \cite{Jankovic2005}.  While such implementations are suitable for some applications, these approaches may still need to cope with  a large unobservable area if environments are cluttered and complex since the FOV is determined by the LOS from the optical sensor(s).  This approach, thus, is not essentially an adequate solution for the NFOV mobile target estimation.  
 
-The second approach deploys radio-frequency (RF) transmitters and receivers where an RF transmitter is mounted on a target of concern.  In one arrangement, RF receivers form a wireless sensor network (WSN), and numerical techniques are used to localize an NFOV target by processing information of received signals such as signal intensity \cite{Bertinato2008,Dai2012,Ni2004,Zhang2010,Liu2007,Gezici2008,Guvenc2009}.  For example, Wang \textit{et al.} \cite{Wang2012} developed and applied a Bayesian filter using the chirp-spread-spectrum ranging.  The achievement of sub-meter accuracy has been reported, but the accuracy significantly depends on the settings of the networking infrastructure including the location and the number of wireless sensor nodes \cite{Jung2011,gao2013location}.  A more accurate arrangement with minimal infrastructure uses ``fingerprints'' \cite{Bahl2000,lad04}.  In a static environment, there is a unique fingerprint at each location.  A target can thus be localized by feature-matching the fingerprints.  Whilst this arrangement could achieve high accuracy, the critical problem inherent in the RF-based approach is its applicability to only targets with an RF transmitter \cite{Chen1999,Prigge2004,Seow2008,Khoury2009}. 
+The second approach deploys radio-frequency (RF) transmitters and receivers where an RF transmitter is mounted on a target of concern.  In one arrangement, RF receivers form a wireless sensor network (WSN), and numerical techniques are used to localize an NFOV target by processing information of received signals such as signal intensity \cite{Bertinato2008,Dai2012,Ni2004,Zhang2010,Liu2007,Gezici2008,Guvenc2009}.  For example, Wang \textit{et al.} \cite{Wang2012} developed and applied a Bayesian filter using the chirp-spread-spectrum ranging.  The achievement of sub-meter accuracy has been reported, but the accuracy significantly depends on the settings of the networking infrastructure including the location and the number of wireless sensor nodes \cite{Jung2011,Gao2013}.  A more accurate arrangement with minimal infrastructure uses ``fingerprints'' \cite{Bahl2000,lad04}.  In a static environment, there is a unique fingerprint at each location.  A target can thus be localized by feature-matching the fingerprints.  Whilst this arrangement could achieve high accuracy, the critical problem inherent in the RF based approach is its applicability to only targets with an RF transmitter \cite{Chen1999,Prigge2004,Seow2008,Khoury2009}. 
 
-In the third, acoustic sensors are used for target estimation. The acoustic approach can be advantageously used for any target that can make sound unlike the RF-based approach. Further, if the target is cooperative, it is possible to communicate with the target and estimate its location via sound.  The approach most commonly utilizes the time-of-arrival (TOA) information of acoustic signals. Chan \textit{et al.} {\cite{cha06}} and Riba and Urruela~{\cite{rib05}} localized a target by positioning three or more LOS acoustic sensors. Furthermore, Nakadai \textit{et al.}~{\cite{nakadai06}} and Sasaki \textit{et al.}~{\cite{sasaki09}} demonstrated LOS mobile robot localization using microphone array. Mak and Furukawa~{\cite{Mak2009}} considered the diffraction characteristics of low-frequency sound and estimated target location. The former is an acoustic version of WSN, but the reflective nature of sound waves confines acoustic sensor locations to LOS, which is not possible in many occasions.  The latter enables NFOV target estimation, but the time of sound generation, which is often unknown, must be informed beforehand. The majority of sound localization challenges have been focused on the direction of sound rather than its position due to the complexity of sound wave propagation {\cite{mic03,sva12,lu10}}. \thl{Recently,  acoustic physical models are used to improve the localization capability by investigating the reflection of sound in a known environment. Narang~\textit{et. al.} {\cite{narang2014auditory}} detected reflected sound by a combination of an image model and dynamic environment map. This approach estimates the direction of the sound source, however, it does not estimate the target position in NFOV, and does not fuse the vision information for localization. Even~\textit{et. al.} {\cite{even2014audio}} localized the sound source by ray tracing method based on the reflection signal arrival directions.  However, their approach resulted in NFOV estimation with meter order accuracy and some inconsistent variation in trials.} 
+In the third, acoustic sensors are used for target estimation. The acoustic approach can be advantageously used for any target that can make sound unlike the RF based approach. Further, if the target is cooperative, it is possible to communicate with the target and estimate its location via sound.  The approach most commonly utilizes the time-of-arrival (TOA) information of acoustic signals. Chan \textit{et al.} {\cite{cha06}} and Riba and Urruela~{\cite{rib05}} localized a target by positioning three or more LOS acoustic sensors; furthermore, Nakadai \textit{et al.}~{\cite{nakadai06}} and Sasaki \textit{et. al.}~{\cite{sasaki09}} demonstrated LOS mobile robot localization using microphone array. Mak and Furukawa~{\cite{Mak2009}} considered the diffraction characteristics of low-frequency sound and estimated target location. The former is an acoustic version of WSN, but the reflective nature of sound waves confines acoustic sensor locations to LOS, which is not possible in many occasions.  The latter enables NFOV target estimation, but the time of sound generation, which is often unknown, must be informed beforehand. \thl{Recently, {\cite{narang2014auditory}} and {\cite{even2014audio}} investigated the NFOV target localization identifying reflection of sound. Narang \textit{et. al.} detected reflected sound by  combination of an image model and dynamic environment map. Even~\textit{et. al.} localized the sound source by ray tracing method based on the reflection signal arrival directions. The former approach estimates the direction of sound source; however, does not estimate the target position in NFOV. The latter approach resulted NFOV estimation with meter order accuracy with some of inconsistent variation in trials.} The majority of sound localization challenges have been focused on the direction of sound rather than its position due to complexity of sound wave propagation {\cite{mic03,sva12,lu10}}.
 
-The last approach enhances the NFOV target estimation with a sensor having a limited FOV such as an optical sensor by using a numerical technique.  Mauler \cite{mau03} stated the NFOV estimation problem mathematically, and Furukawa, et al. \cite{fur06,fur12} developed the so-called Bayesian Search and Tracking (SAT) technique as a generalized numerical solution.  In this technique, the event of ``no detection'' is converted into an observation likelihood and utilized to positively update probabilistic belief on the target that is dynamically maintained by the recursive Bayesian estimation (RBE).  While search with no detection is made possible in addition to tracking with detection, the search has been found to fail unless the target is re-discovered within a short period after being lost.  The unreliability of the belief significantly grows when there is no detection.  It is, therefore, preferable to use any information on the target if available rather than purely relying on the information contained in no detection events.
+The last approach enhances the NFOV target estimation with a sensor having a limited FOV such as an optical sensor by using a numerical technique.  Mauler \cite{mau03} stated the NFOV estimation problem mathematically, and Furukawa, et al. \cite{fur06,fur12} developed the so-called Bayesian Search and Tracking (SAT) technique as a generalized numerical solution.  In this technique, the event of ``no detection'' is converted into an observation likelihood and utilized to positively update probabilistic belief on the target that is dynamically maintained by the recursive Bayesian estimation (RBE).  While search with no detection is made possible in addition to tracking with detection, search has been found to fail unless the target is re-discovered within a short period after being lost.  The unreliability of the belief significantly grows when there is no detection.  It is, therefore, preferable to use any information on the target if available rather than purely relying on the information contained in no detection events.
   
-This paper presents an NFOV target estimation approach, which incorporates an acoustic sensor in addition to an optical sensor.  Whilst the optical sensor accurately localizes a target when the target is in the FOV, the acoustic sensor is used to estimate the target location even if the target is not in the optical FOV.  The estimation is performed within the RBE framework where observations of the optical and acoustic sensors are each converted into an observation likelihood and making it possible to compute a joint observation likelihood via sensor fusion.  Although the acoustic observation likelihood could be multi-modal with high uncertainty, the target belief updated in the past with sharply unimodal optical likelihoods when the target was in the optical FOV effectively acts as strong prior knowledge and allows accurate NFOV target estimation.  A technique to construct an observation likelihood using an acoustic sensor composed of two microphones is also proposed.  The proposed technique derives the interaural level difference (ILD) of observations from the two microphones for different target positions and stores the ILDs as fingerprints, or acoustic cues, \textit{a priori}.  Given a new acoustic observation, an acoustic observation likelihood is computed by quantifying the correlation of the ILD of the new observation to the stored ILDs.  While the acoustic cues must be created in advance, the technique achieves the truly NFOV target estimation.   
+This paper presents a NFOV target estimation approach, which incorporates an acoustic sensor in addition to an optical sensor.  Whilst the optical sensor accurately localizes a target when the target is in the FOV, the acoustic sensor is used to estimate the target location even if the target is not in the optical FOV.  The estimation is performed within the RBE framework where observations of the optical and acoustic sensors are each converted into an observation likelihood and making it possible to compute a joint observation likelihood via sensor fusion.  Although the acoustic observation likelihood could be multi-modal with high uncertainty, the target belief updated in the past with sharply unimodal optical likelihoods when the target was in the optical FOV effectively acts as strong prior knowledge and allows accurate NFOV target estimation.  A technique to construct an observation likelihood using an acoustic sensor composed of two microphones is also proposed.  The proposed technique derives the interaural level difference (ILD) of observations from the two microphones for different target positions and stores the ILDs as fingerprints, or acoustic cues, \textit{a priori}.  Given a new acoustic observation, an acoustic observation likelihood is computed by quantifying the correlation of the ILD of the new observation to the stored ILDs.  While the acoustic cues must be created in advance, the technique achieves the truly NFOV target estimation.   
 
 The paper is organized as follows. The following section reviews the conventional RBE that uses an optical sensor as well as the grid-based method. Section \ref{sec:acoustic} presents the proposed target estimation approach incorporating an acoustic sensor. Section \ref{sec:examples} demonstrates the efficacy of the proposed target estimation through experimental analysis, and conclusions are summarized in the final section.
 
@@ -446,10 +445,10 @@ where, depending on whether there exists a target within the detectable region, 
 Figure \ref{fig:optical} illustrates the configuration of the optical observation likelihood when a sensor platform is in a one-dimensional target space.  When a target is not detected without having it in the detectable region, the likelihood tells where the target is unlikely to be and is thus represented as a heavily non-Gaussian distribution. When the target is detected, the likelihood becomes near-Gaussian with its peak located at the observed location. The closer the target to the sensor platform, the more accurate the estimation. 
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width = \columnwidth]{optical.png} % PDF
-    \caption{Optical observation likelihood}
-    \label{fig:optical}
+	\centering
+	\includegraphics[width = \columnwidth]{optical.png} % PDF
+	\caption{Optical observation likelihood}
+	\label{fig:optical}
 \end{figure}
 
 
@@ -478,11 +477,11 @@ and $\bl{\Delta x_r, \Delta y_r}$ is the size of the grid.
 Whilst the generalized optical observation likelihood allows belief update and maintenance regardless of whether the target has been detected, the RBE with the optical observation likelihood does not update and maintain the belief effectively.  Figure~\ref{fig:FOV} illustratively depicts this problem where the FOV and the NFOV are given by the light blue and the white colors respectively.  When the configuration of the target space is constrained complicatedly, the FOV becomes significantly limited compared to the target space.  This makes the belief dominantly updated by the observation likelihood with no detection.  If no detection continuously takes place, the belief keeps spread out with predictions and becomes highly uncertain and unreliable.  The next section will describe the proposed target estimation incorporating an acoustic sensor to solve this problem.  
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.6\columnwidth]{FOV.png} % PDF
-%    \includegraphics[bb = 0 0 792 621, width=5cm]{Figures/FOV.png} %DVI
-    \caption{Optical observation likelihood}
-    \label{fig:FOV}
+	\centering
+	\includegraphics[width=0.6\columnwidth]{FOV.png} % PDF
+%	\includegraphics[bb = 0 0 792 621, width=5cm]{Figures/FOV.png} %DVI
+	\caption{Optical observation likelihood}
+	\label{fig:FOV}
 \end{figure}
 
 
@@ -494,7 +493,7 @@ Whilst the generalized optical observation likelihood allows belief update and m
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Subsection
 \subsection{Acoustic Sensor Model and Observation Likelihood}
-The acoustic sensor incorporated in the proposed approach can observe a target on the non-line-of-sight (NLOS) or even in the NFOV though accuracy is limited due to the complex behavior of sound signals including reflection, refraction, and diffraction.  Because of its broad range, the observable region of the acoustic sensor could be considered unlimited when compared to that of the optical sensor.  The acoustic sensor model $s_a$ can be therefore constructed without defining an observable region unlike the optical sensor model: 
+The acoustic sensor incorporated in the proposed approach can observe a target on the non-line-of-sight (NLOS) or even in the NFOV though accuracy is limited due to the complex behavior of sound signals including reflection, refraction and diffraction.  Because of its broad range, the observable region of the acoustic sensor could be considered unlimited when compared to that of the optical sensor.  The acoustic sensor model $s_a$ can be therefore constructed without defining an observable region unlike the optical sensor model: 
 \begin{equation}\label{eq:acoustic_sensor_model}
 \pVzbp{s_a}{k}{t} = \pVhp{s_a}{t}{\Vxbp{k}{t},\tVxbp{k}{s},\pVvbp{s_a}{k}{t}}, 
 \end{equation}
@@ -506,10 +505,10 @@ which is probabilistically equivalent to the likelihood given by
 Figure \ref{fig:acoustic} illustrates the observation likelihood of the acoustic sensor in comparison to that of the optical sensor in Figure \ref{fig:optical}.  The observation likelihood could be heavily non-Gaussian with multiple peaks if the target is on the NLOS though it is highly likely that one of the peaks is found near the location of the target as shown in the figure.  The likelihood with a target on the LOS could still be multi-modal if there are adjacent structures that create reflective, refractive and/or diffractive sound signals, but it captures the target location more confidently with a sharper peak.  The likelihood with a target on the LOS without adjacent structures will be a sharp near-Gaussian distribution since the direct sound dominates the observation.  
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width = \columnwidth]{acoustic.png} % PDF
-    \caption{Acoustic observation likelihood}
-    \label{fig:acoustic}
+	\centering
+	\includegraphics[width = \columnwidth]{acoustic.png} % PDF
+	\caption{Acoustic observation likelihood}
+	\label{fig:acoustic}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -525,34 +524,34 @@ Figure \ref{fig:joint} illustratively shows the resulting joint optical/acoustic
 
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\columnwidth]{joint.png} % PDF
-    \caption{Joint optical/acoustic observation likelihood}
-    \label{fig:joint}
+	\centering
+	\includegraphics[width=0.8\columnwidth]{joint.png} % PDF
+	\caption{Joint optical/acoustic observation likelihood}
+	\label{fig:joint}
 \end{figure}
 
 Figure \ref{fig:jointRBE} shows the further ability of the proposed approach in reliable target estimation.  The proposed approach performs RBE by using the joint likelihood in correction (substituting Equation (\ref{eq:joint}) into Equation (\ref{eq:qT})) within the standard RBE framework.  Because sharpest and most Gaussian is the optical observation likelihood with detection, the prior belief is most determined by the last optical observation and remains a sharp Gaussian distribution.  The posterior belief with the joint observation likelihood inherits this characteristics since the joint likelihood most likely captures the target location with a peak and magnifies the confidence of the prior belief with the joint likelihood.  
 
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\columnwidth]{posterior.png} % PDF
-    \caption{RBE incorporating an acoustic sensor}
-    \label{fig:jointRBE}
+	\centering
+	\includegraphics[width=0.8\columnwidth]{posterior.png} % PDF
+	\caption{RBE incorporating an acoustic sensor}
+	\label{fig:jointRBE}
 \end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Subsection
 \subsection{Modeling of Acoustic Observation Likelihood}
-The technique proposed in this paper to model an acoustic observation likelihood uses two microphones as an acoustic sensor and constructs acoustic cues of the target in the environment of concern \textit{a priori}.  This is because of the potential of the proposed technique for NLOS target estimation through the preliminary investigations of the authors \cite{kim12,kum11,nod12} and an inability of the aforementioned existing techniques.  Figure~\ref{fig:acoustic sensor} shows a schematic diagram of the proposed technique to model an acoustic observation likelihood.  We assume that the target emits sound with white noise, and we indeed use it to create the acoustic observation likelihood.  A white noise sound emitted at a specific position by the target for a certain time period is first recorded by two microphones.  After applying fast Fourier transform (FFT), the difference between the frequency domain amplitude responses, known as the ILD, is then derived and further sampled to form an ILD vector within the frequency range of interest.  The ILD vector is created with various target positions and each saved as an acoustic cue.  The acoustic observation likelihood modeling essentially corresponds to creating the set of ILD vectors.  When a target emitted a white noise sound, the ILD vector of the sound observation is compared to all the acoustic cues.  The degree of similarity is then used to develop a correlation map indicating where the target is likely to be.  The correlation map is the acoustic likelihood of the particular sound observation.  
+The technique proposed in this paper to model an acoustic observation likelihood uses two microphones as an acoustic sensor and constructs acoustic cues of the target in the environment of concern \textit{a priori}.  This is because of the potential of the proposed technique for NLOS target estimation through the preliminary investigations of the authors \cite{kim12,kum11,nod12} and inability of the aforementioned existing techniques.  Figure~\ref{fig:acoustic sensor} shows a schematic diagram of the proposed technique to model an acoustic observation likelihood.  We assume that the target emits sound with white noise, and we indeed use it to create the acoustic observation likelihood.  A white noise sound emitted at a specific position by the target for a certain time period is first recorded by two microphones.  After applying fast Fourier transform (FFT), the difference between the frequency-domain amplitude responses, known as the ILD, is then derived and further sampled to form an ILD vector within the frequency range of interest.  The ILD vector is created with various target positions and each saved as an acoustic cue.  The acoustic observation likelihood modeling essentially corresponds to creating the set of ILD vectors.  When a target emitted a white noise sound, the ILD vector of the sound observation is compared to all the acoustic cues.  The degree of similarity is then used to develop a correlation map indicating where the target is likely to be.  The correlation map is the acoustic likelihood of the particular sound observation.  
 
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width = 8cm]{likelihood.png} % PDF
-    \caption{Acoustic sensor}
-    \label{fig:acoustic sensor}
+	\centering
+	\includegraphics[width = 8cm]{likelihood.png} % PDF
+	\caption{Acoustic sensor}
+	\label{fig:acoustic sensor}
 \end{figure}
 
 Mathematically, let the frequency-domain sound \linebreak[4]level of the target at the $i$th position $\bs{\Vxbp{k}{t}}_{i}$, which is observed by the left and right microphones, be $s_l\bs{\omega|\bs{\Vxbp{k}{t}}_{i}}$ and $s_r\bs{\omega|\bs{\Vxbp{k}{t}}_{i}}$ where $\omega$ is a frequency of sound.  The ILD for the $i$th position $\bs{\Vxbp{k}{t}}_{i}$, $\Delta S\bs{\omega|\bs{\Vxbp{k}{t}}_i}$, is then given by 
@@ -589,7 +588,7 @@ where $\mu_{i}^{\bs{\cdot}}$ is a cubic B-spline basis function. Further detaile
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{NUMERICAL AND EXPERIMENTAL ANALYSIS}
 \label{sec:examples}
-The efficacy of the proposed approach was examined experimentally in two steps.  The first step was aimed at studying the capability and limitation of the proposed acoustic sensing technique by parametrically changing the complexity of the environment where the experimental system with a speaker array and a movable/replaceable wall was developed specifically for this study.  After verifying the feasibility of the acoustic sensing for NLOS target localization, the applicability of the proposed approach to the estimation of an NFOV target in a complex practical environment was investigated.  The investigation looked into the performance of both the joint optical/acoustic observation likelihood and the RBE with the joint likelihood.  
+The efficacy of the proposed approach was examined experimentally in two steps.  The first step was aimed at studying the capability and limitation of the proposed acoustic sensing technique by parametrically changing the complexity of the environment where the experimental system with a speaker array and a movable/replaceable wall was developed specifically for this study.  After verifying the feasibility of the acoustic sensing for NLOS target localization, the applicability of the proposed approach to the estimation of a NFOV target in a complex practical environment was investigated.  The investigation looked into the performance of both the joint optical/acoustic observation likelihood and the RBE with the joint likelihood.  
 
 
 \subsection{Acoustic Observation of NLOS Target}
@@ -597,10 +596,11 @@ Figure~\ref{fig:pma} shows the design of the experimental system that changes th
 
 Shown in the figure as blue crosses are speaker locations.  A microcontroller controls speakers so that each speaker sequentially emits white noise sound for a programmed period.  A set of ILDs for a wall setting can be thus collected automatically.  Once the ILDs are collected, the ability of the proposed acoustic sensing technique is evaluated by emitting sound from a speaker at some location within the area of the speaker array and identifying the location in the form of observation likelihood.  The location is not where one of the speakers of the speaker array is located to demonstrate the ability of the proposed technique in identifying the target at an arbitrary position.  
 
-Figure~\ref{fig:pmb} shows the developed experimental system \linebreak[4]whereas the dimensions and other parameters used in the experiments are listed in Table~\ref{tab:s-noise}.  The sound was sampled and represented at 8,192 frequency bins within the audible range to capture its behavior accurately.  54 speakers were aligned to cover the open space.  The distance and the length of the wall were varied to introduce both lightly NLOS and heavily NLOS environments.  The case of two walls ($n_w=2)$ was tested in addition to the single wall case to make the environment more complex.  The distance of only the wall closer to the acoustic sensor was varied.  
+Figure~\ref{fig:pmb} shows the developed experimental system \linebreak[4]whereas the dimensions and other parameters used in the experiments are listed in Table~\ref{tab:s-noise}.  Sound was sampled and represented at 8,192 frequency bins within the audible range to capture its behavior accurately.  54 speakers were aligned to cover the open space.  The distance and the length of the wall were varied to introduce both lightly NLOS and heavily NLOS environments.  The case of two walls ($n_w=2)$ were tested in addition to the single wall case to make the environment more complex.  The distance of only the wall closer to the acoustic sensor was varied.  
+
 
 \begin{figure}[ht]
-    \centering
+	\centering
   \subfigure[Schematic design]{
     \label{fig:pma}
     \includegraphics[width=0.46\columnwidth]{experiment_schematics3.png} % PDF
@@ -609,8 +609,8 @@ Figure~\ref{fig:pmb} shows the developed experimental system \linebreak[4]wherea
     \label{fig:pmb}
     \includegraphics[width=0.46\columnwidth]{experiment_photo.jpg} % PDF
   }
-    \caption{Experimental system for investigating influence of environmental complexity}
-    \label{fig:p-map}
+	\caption{Experimental system for investigating influence of environmental complexity}
+	\label{fig:p-map}
 \end{figure}
 
 \begin{table}[htbp]
@@ -633,31 +633,31 @@ $n$ & 54 & $n_{w}$ & $\bm{1,2}$\\
 \thl{Figure~{\ref{fig:ILDs}} shows the four ILDs each observed with a target at one of the 54 positions when $\bl{L_d, L_w, n_w} = \bl{50, 40, 1}$.  Two positions are on the LOS, and four are on the NLOS.  It is first seen that the configuration of the ILD varies depending on the target position.  The configuration is different even when the target is on the NLOS.  This indicates that the ILD contains information on the target position no matter whether the target is on the LOS. } 
 
 \begin{figure}[ht]
-    \centering
-    \subfigure[$\bl{60,0}$ (LOS)]{
-        \label{fig:l1}
-        \includegraphics[width = 0.45\columnwidth]{step006.png} % PDF
-        }
-    \subfigure[$\bl{36,34}$ (NLOS)]{
-        \label{fig:l2}
-        \includegraphics[width =  0.45\columnwidth]{step022.png} % PDF
-    }
-    \subfigure[$\bl{24,56}$ (NLOS)]{
-        \label{fig:l3}
-        \includegraphics[width =  0.45\columnwidth]{step033.png} % PDF
-    }
-    \subfigure[$\bl{12,90}$ (LOS)]{
-        \label{fig:l4}
-        \includegraphics[width =  0.45\columnwidth]{step050.png} % PDF
-    }
-    \caption{ILDs at four of the 54 positions}
-    \label{fig:ILDs}
+	\centering
+	\subfigure[$\bl{60,0}$ (LOS)]{
+		\label{fig:l1}
+		\includegraphics[width = 0.45\columnwidth]{step006.png} % PDF
+		}
+	\subfigure[$\bl{36,34}$ (NLOS)]{
+		\label{fig:l2}
+		\includegraphics[width =  0.45\columnwidth]{step022.png} % PDF
+	}
+	\subfigure[$\bl{24,56}$ (NLOS)]{
+		\label{fig:l3}
+		\includegraphics[width =  0.45\columnwidth]{step033.png} % PDF
+	}
+	\subfigure[$\bl{12,90}$ (LOS)]{
+		\label{fig:l4}
+		\includegraphics[width =  0.45\columnwidth]{step050.png} % PDF
+	}
+	\caption{ILDs at four of the 54 positions}
+	\label{fig:ILDs}
 \end{figure}
 
-    
+	
 Figure~\ref{fig:EC-AL} shows four resulting acoustic observation likelihoods each with a different condition.  The former two cases are with a single wall having different distances and the same length whereas the latter two cases are with two walls having different lengths and the same distance.  The result first indicates that the target location is well estimated when the distance is short (Figure~\ref{fig:al1}) or when the length is small (Figure~\ref{fig:al3}).  The target is closer to LOS in these conditions since sound reaches the acoustic sensor with a small number of reflections.  The identification of the target location in the remaining two cases (Figures~\ref{fig:al2} and \ref{fig:al4}) is hard due to a number of sound reflections.  The identification with two walls (Figures~\ref{fig:al3} and \ref{fig:al4}) is seen to be harder than that with a single wall (Figures~\ref{fig:al1} and \ref{fig:al2}) for the same reason.  While the acoustic observation likelihood is heavily multi-modal in these cases, the target location is still captured by the highest peak (Figures~\ref{fig:al1}-\ref{fig:al3}) or at least by one of the peaks (Figure~\ref{fig:al4}).  This demonstrates the ability of the proposed acoustic sensing technique for identifying the location of the NFOV target though with limited accuracy.  
 \begin{figure}[ht]
-    \centering
+	\centering
   \subfigure[$L_d=0, L_w=70, n_w=1$]{
     \label{fig:al1}
     \includegraphics[trim = 30mm 5mm 30mm 15mm,clip,width = 0.468\columnwidth]{w1_Lw70_Ld0_step023.png} % PDF
@@ -674,47 +674,47 @@ Figure~\ref{fig:EC-AL} shows four resulting acoustic observation likelihoods eac
     \label{fig:al4}
     \includegraphics[trim = 30mm 5mm 30mm 15mm,clip,width =  0.468\columnwidth]{w2_Lw70_Ld20_step033.png} % PDF
 }
-    \caption{Acoustic observation likelihoods for different environmental complexity}
-    \label{fig:EC-AL}
+	\caption{Acoustic observation likelihoods for different environmental complexity}
+	\label{fig:EC-AL}
 \end{figure}
 
-Figure~\ref{fig:msw} and \ref{fig:mdw} show the mean error of the acoustic observation likelihood when the distance and the length were varied for single and double wall cases.  The mean error is a distance of the nearest peak of the acoustic observation likelihood to the true target location. The result of the mean error shows that the proposed technique could locate the target within $2$ cm error in most (11) of the 12 cases for the single wall case.  The estimation is particularly good when the wall length was small.  The mean error with two walls, meanwhile, is over $20$ cm in four of nine cases.  This indicates that the proposed acoustic sensing technique is not sufficient enough to obtain less than the data points ($10$ cm) accuracy for NLOS localization.  Figure~\ref{fig:de} shows the variation of the differential entropy with respect to the number of walls and the wall length.  It is seen that the addition of a wall dominantly increases uncertainty.  While the proposed acoustic sensing technique is effective enough in relatively simple NLOS environments, enhancement is necessary when target estimation in more complex environments is pursued.  
-
+Figure~\ref{fig:msw} and \ref{fig:mdw} show the mean error of the acoustic observation likelihood when the distance and the length were varied for single and double wall cases.  The mean error is a distance of the nearest peak of the acoustic observation likelihood to the true target location. The result of the mean error shows that the proposed technique could locate the target within $2$ cm error in most (11) of the 12 cases for single wall case.  The estimation is particularly good when the wall length was small.  The mean error with two walls, meanwhile, is over $20$ cm in four of nine cases.  This indicates that the proposed acoustic sensing technique is not sufficient enough for NLOS localization.  Figure~\ref{fig:de} shows the variation of the differential entropy with respect to the number of walls and the wall length.  It is seen that the addition of a wall dominantly increases uncertainty.  While the proposed acoustic sensing technique is effective enough in relatively simple NLOS environments, enhancement is necessary when target estimation in more complex environments is pursued.  
 
 \begin{figure}[ht]
-    \centering
+	\centering
   \subfigure[Single wall mean error]{
     \label{fig:msw}
     \includegraphics[width = 0.468\columnwidth]{w1_error.PNG} % PDF
   }
   \subfigure[Double wall mean error]{
     \label{fig:mdw}
-    \includegraphics[width = 0.468\columnwidth]{w2_error.PNG}
+	\includegraphics[width = 0.468\columnwidth]{w2_error.PNG}
   }
    \subfigure[Diferential entropy for single and double wall]{
-       \label{fig:de}
-       \includegraphics[width = 0.468\columnwidth]{H_1w2w.PNG} % PDF
+   	\label{fig:de}
+   	\includegraphics[width = 0.468\columnwidth]{H_1w2w.PNG} % PDF
   }
-    \caption{Mean error and differential entropy of the acoustic observation likelihood with a single and double wall}
-    \label{fig:EUSW}
+	\caption{Mean error and differential entropy of the acoustic observation likelihood with a single and double wall}
+	\label{fig:EUSW}
 \end{figure}
 
 \subsection{NFOV Target Estimation in Complex Practical Environments}
-This subsection investigates the applicability of the proposed approach to NFOV target estimation in complex practical environments by first enhancing the acoustic sensing with the optical sensing and then executing the RBE with the joint optical/acoustic observation likelihood.  Figure~\ref{fig:map} shows the map of the indoor environment used to demonstrate the practical applicability of the proposed approach as well as the details of the demonstration.  A sensor platform with a camera and two microphones for optical and acoustic observations was located in a corridor and faced with the open space the target could move around.  The environment is complex with the existence of walls and structures so that the FOV of the camera is significantly limited compared to the target space.  Shown in the figure as yellow crosses are the target locations at which sound was emitted to collect ILDs.  After the collection, the target was then moved along the lines indicated in the figure and emitted sound.  The observation and estimation were examined at the four positions marked by red circles.  
+This subsection investigates the applicability of the proposed approach to NFOV target estimation in complex practical environments by first enhancing the acoustic sensing with the optical sensing and then executing the RBE with the joint optical/acoustic observation likelihood.  Figure~\ref{fig:map} shows the map of the indoor environment used to demonstrate the practical applicability of the proposed approach as well as the details of the demonstration.  A sensor platform with a camera and two microphones for optical and acoustic observations was located in a corridor and faced with the open space the target could move around.  The environment is complex with the existence of walls and structures, so that the FOV of the camera is significantly limited compared to the target space.  Shown in the figure as yellow crosses are the target locations at which sound was emitted to collect ILDs.  After the collection, the target was then moved along the lines indicated in the figure and emitted sound.  The observation and estimation was examined at the four positions marked by red circles.  
 
 Figure~\ref{fig:tsp} shows the target and the sensor platform.  The sensor platform is with a camera and two microphones as aforementioned whereas the target is a wireless speaker.  The same speaker was used to construct the acoustic observation likelihood.  White noise was emitted from the speaker, and the parameters used to construct the acoustic observation likelihood are listed in Table~\ref{tab:noise}.  
+
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width = 0.8\columnwidth]{map.png} % PDF
-    \caption{Map of the test environment and demonstration}
-    \label{fig:map}
+	\centering
+	\includegraphics[width = 0.8\columnwidth]{map.png} % PDF
+	\caption{Map of the test environment and demonstration}
+	\label{fig:map}
 \end{figure}
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width = 0.8\columnwidth]{system.png} % PDF
-    \caption{Target and sensor platform}
-    \label{fig:tsp}
+	\centering
+	\includegraphics[width = 0.8\columnwidth]{system.png} % PDF
+	\caption{Target and sensor platform}
+	\label{fig:tsp}
 \end{figure}
 
 \begin{table}[htbp]
@@ -739,7 +739,7 @@ $n$ & 65\\
 Figure~\ref{fig:acoustic likelihoods} shows the acoustic observation likelihoods when the target moved and emitted sound at the four marked target positions, which are at the 1st, 7th, 35th and 51th steps.  The target is in the FOV only at the 1st step.  The acoustic observation likelihood is seen to be multi-modal due to sound reflection even when the target is within the FOV and thus on the LOS.  The proposed acoustic sensing technique has, however, been able to accurately identify the true target position at one of the peaks and successfully detect it except for the 7th step.  Failure in the 7th step is a result of the limitation of acoustic sensing shown and concluded in the last subsection, but it is to be importantly noted that the target position is captured near the second highest peak.  
 
 \begin{figure}[ht]
-    \centering
+	\centering
   \subfigure[$k=1$ (FOV)]{
     \label{fig:a1}
     \includegraphics[trim = 15mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{AOL_Figure1.png} % PDF
@@ -756,14 +756,14 @@ Figure~\ref{fig:acoustic likelihoods} shows the acoustic observation likelihoods
     \label{fig:a4}
     \includegraphics[trim =  15mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{AOL_Figure4.png} % PDF
   }
-    \caption{Acoustic observation likelihoods}
-    \label{fig:acoustic likelihoods}
+	\caption{Acoustic observation likelihoods}
+	\label{fig:acoustic likelihoods}
 \end{figure}
 
 The effectiveness of the proposed acoustic sensing technique is further understood comparatively by seeing optical observation likelihoods in Figure~{\ref{fig:optical likelihoods}}.  \thl{The optical sensor can identify the target accurately when it is within the FOV in Fig. {\ref{fig:o1}}.  The observation likelihood with the target outside the FOV in Fig. {\ref{fig:o2}}-{\ref{fig:o4}} can however provide no localization capability on the target. The likelihood of the target anywhere in NFOV is equally distributed with no specific estimation of the target position.}  Finally, Figure~\ref{fig:joint likelihoods} shows the joint optical/ acoustic observation likelihoods.  It is seen that the joint observation likelihoods most narrow down the possible target locations by detecting the target dominantly with the optical observation likelihood when the target is within the FOV and with the acoustic observation likelihood when the target is outside the FOV.  The wrong computation at the 7th step, however, remains and necessitates RBE for target estimation.  
 
 \begin{figure}[ht]
-    \centering
+	\centering
   \subfigure[$k=1$ (FOV)]{
     \label{fig:o1}
     \includegraphics[trim = 15mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{OOL_Figure1.png} % PDF
@@ -780,12 +780,12 @@ The effectiveness of the proposed acoustic sensing technique is further understo
     \label{fig:o4}
     \includegraphics[trim = 15mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{OOL_Figure4.png} % PDF
   }
-    \caption{Optical observation likelihoods}
-    \label{fig:optical likelihoods}
+	\caption{Optical observation likelihoods}
+	\label{fig:optical likelihoods}
 \end{figure}
 
 \begin{figure}[ht]
-    \centering
+	\centering
   \subfigure[$k=1$ (FOV)]{
     \label{fig:j1}
     \includegraphics[trim = 15mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{JOAO_Figure1.png} % PDF
@@ -802,8 +802,8 @@ The effectiveness of the proposed acoustic sensing technique is further understo
     \label{fig:j4}
     \includegraphics[trim = 15mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{JOAO_Figure4.png} % PDF
   }
-    \caption{Joint optical/acoustic observation likelihoods}
-    \label{fig:joint likelihoods}
+	\caption{Joint optical/acoustic observation likelihoods}
+	\label{fig:joint likelihoods}
 \end{figure}
 
 
@@ -815,7 +815,7 @@ Having understood the limitation of the target detection with observations only 
 Figure~\ref{fig:hybrid experiment} shows the target belief estimated via RBE with the joint optical/acoustic observation likelihoods.  The result shows that the target position is well estimated with all the time steps including the 7th step where the joint observation likelihood did not detect the target with the highest peak.  Because the target was initially observed by the optical sensor, strong and accurate prior belief was constructed.  Since the prior knowledge is updated by prediction with the random walk model and correction with the joint observation likelihood, the proposed approach can eliminate wrong detections and estimate the target position near the true position.  
 
 \begin{figure}[ht]
-    \centering
+	\centering
   \subfigure[$k=1$ (FOV)]{
     \label{fig:12-1}
     \includegraphics[trim = 15mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{POA_Figure1.png} % PDF
@@ -832,14 +832,14 @@ Figure~\ref{fig:hybrid experiment} shows the target belief estimated via RBE wit
     \label{fig:12-51}
     \includegraphics[trim = 15mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{POA_Figure51.png} % PDF
   }
-    \caption{Proposed optical/acoustic target estimation}
-    \label{fig:hybrid experiment}
+	\caption{Proposed optical/acoustic target estimation}
+	\label{fig:hybrid experiment}
 \end{figure}
 
 Figure~\ref{fig:optical experiment} shows the target belief estimated conventionally with the optical observation likelihoods only to comparatively verify the effectiveness of the proposed approach.  The result with the optical observation likelihoods is seen to estimate the target position wrongly when the target is in the NFOV.  Because an inaccurate random-walk motion model is used, the target is estimated continuously at the location where it was lost.  Finally, Figure~\ref{fig:quantitative} shows the results quantitatively evaluating the performance of the proposed approach.  Figure~\ref{fig:error} shows the transition of the mean error of the estimated target position from the true position whereas the transition of the Kullback-Leibler (KL) divergence is exhibited in Figure~\ref{fig:kl}.  The error transition indicates that the proposed approach maintains error within 1 m even when the target has not been lost from the FOV for some time whilst the conventional RBE with optical observation likelihoods increases the error with high gradient.  The KL divergence transition also shows this behavior, indicating that the proposed approach maintains target information with the use of the acoustic sensor.  
 
 \begin{figure}[ht]
-    \centering
+	\centering
   \subfigure[$k=1$ (FOV)]{
     \label{fig:13-1}
     \includegraphics[trim = 15mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{COT_Figure1.png} % PDF
@@ -856,12 +856,12 @@ Figure~\ref{fig:optical experiment} shows the target belief estimated convention
     \label{fig:13-51}
     \includegraphics[trim = 15mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{COT_Figure51.png} % PDF
   }
-    \caption{Conventional optical target estimation}
-    \label{fig:optical experiment}
+	\caption{Conventional optical target estimation}
+	\label{fig:optical experiment}
 \end{figure}
 
 \begin{figure}[ht]
-    \centering
+	\centering
   \subfigure[Error vs time step]{
     \label{fig:error}
     \includegraphics[trim = 0mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{proposed_Error.png} % PDF
@@ -870,8 +870,8 @@ Figure~\ref{fig:optical experiment} shows the target belief estimated convention
     \label{fig:kl}
     \includegraphics[trim = 0mm 0mm 15mm 0mm,clip,width = 0.46\columnwidth]{proposed_KLD.png} % PDF
   }
-    \caption{Quantitative analysis}
-    \label{fig:quantitative}
+	\caption{Quantitative analysis}
+	\label{fig:quantitative}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -879,12 +879,12 @@ Figure~\ref{fig:optical experiment} shows the target belief estimated convention
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
 \label{sec:conclusions}
-This paper has presented an NFOV target estimation approach which incorporates optical and acoustic sensors.  The proposed approach performs RBE with joint optical/acoustic observation likelihoods.  Although the acoustic observation likelihood could be multi-modal with high uncertainty, the target belief updated in the past with sharply unimodal optical likelihoods effectively acts as strong prior knowledge and enables accurate NFOV target estimation.  A technique to construct an observation likelihood using an acoustic sensor composed of two microphones has also been proposed.  The acoustic observation likelihood is created by correlating the ILD of the new acoustic observation with the ILDs collected in advance.   
+This paper has presented a NFOV target estimation approach which incorporates optical and acoustic sensors.  The proposed approach performs RBE with joint optical/acoustic observation likelihoods.  Although the acoustic observation likelihood could be multi-modal with high uncertainty, the target belief updated in the past with sharply unimodal optical likelihoods effectively acts as strong prior knowledge and enables accurate NFOV target estimation.  A technique to construct an observation likelihood using an acoustic sensor composed of two microphones has also been proposed.  The acoustic observation likelihood is created by correlating the ILD of the new acoustic observation with the ILDs collected in advance.   
 
-The first experiment studied the capability and limitation of the proposed acoustic sensing technique by parametrically changing the complexity of the environment.  It has been found that the proposed technique can identify the location of an NLOS target but with limited accuracy particularly when the complexity of the environment is severe.  The applicability of the proposed RBE approach with joint optical/acoustic observation likelihoods to the estimation of an NFOV target in a complex practical environment was the investigated as the second experiment.  The result shows that the target position is well estimated at all the time steps even when the joint observation likelihood does not identify the target location well due to the use of prediction with a motion model and strong prior belief constructed with the past optical observation.  
+The first experiment studied the capability and limitation of the proposed acoustic sensing technique by parametrically changing the complexity of the environment.  It has been found that the proposed technique can identify the location of a NLOS target but with limited accuracy particularly when the complexity of the environment is severe.  The applicability of the proposed RBE approach with joint optical/acoustic observation likelihoods to the estimation of a NFOV target in a complex practical environment was the investigated as the second experiment.  The result shows that the target position is well estimated at all the time steps even when the joint observation likelihood does not identify the target location well due to the use of prediction with a motion model and strong prior belief constructed with the past optical observation.  
 
-The paper has demonstrated the new concept for NFOV target estimation, and many challenges are still open for future study.  One of the improvements to the approach is the enhancement of acoustic sensing by incorporating the interaural time difference (ITD) and the interaural phase difference (IPD) as well as the use of non-white noise sound so that the approach could be used for various applications.  Other ongoing work includes the implementations of the proposed approach to the mobile sensor platform and to the infrastructure.  The proposed approach can be used for various practical applications including home security, home heath care, and urban search-and-rescue by the extension.  
-\bibliography{cite_cur}
+The paper has demonstrated the new concept for NFOV target estimation, and many challenges are still open for future study.  One of the improvements to the approach is the enhancement of acoustic sensing by incorporating the interaural time difference (ITD) and the interaural phase difference (IPD) as well as the use of non-white noise sound so that the approach could be used for various applications.  Other ongoing work includes the implementations of the proposed approach to the mobile sensor platform and to the infrastructure.  The proposed approach will can be used for various practical applications including home security, home heath care and urban search-and-rescue by the extension.  
+\bibliography{reference/cite_cur}
 \bibliographystyle{abbrv}
 
 %\appendix
@@ -895,13 +895,13 @@ The paper has demonstrated the new concept for NFOV target estimation, and many 
 %    \item[$\Vxbp{k}{t}$]{state of the target at time step $k$}
 %    \item[$\Vubp{k}{t}$]{target control inputs}
 %    \item[$\Vwbp{k}{t}$]{ system noise of the target}
-%       \item[$\tVxp{s}$]{state of the sensor}
-%       \item[$\tilde{\bs{}}$]{instance of $\bs{}$} 
-%       \item[$P_d\bs{\Vxbp{k}{t}|\tVxp{s}}$]{probability of detecting the target}
-%       \item[$\pVzbp{s_c}{k}{t}$]{target obseved from the optical sensor}
-%       \item[$\pVvbp{s_c}{k}{t}$]{observation noise}
-%       \item[$\emptyset$]{empty element}
-%       \\
+%   	\item[$\tVxp{s}$]{state of the sensor}
+%   	\item[$\tilde{\bs{}}$]{instance of $\bs{}$} 
+%   	\item[$P_d\bs{\Vxbp{k}{t}|\tVxp{s}}$]{probability of detecting the target}
+%   	\item[$\pVzbp{s_c}{k}{t}$]{target obseved from the optical sensor}
+%   	\item[$\pVvbp{s_c}{k}{t}$]{observation noise}
+%   	\item[$\emptyset$]{empty element}
+%   	\\
 %\end{itemize}
 
 
@@ -1135,3 +1135,4 @@ The paper has demonstrated the new concept for NFOV target estimation, and many 
 %
 %\end{thebibliography}
 \end{document}
+
